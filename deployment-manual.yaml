@@ -1,0 +1,33 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deployment
+  namespace: frontend
+specs:
+  replicas: 3
+  selector:
+    matchlabels:
+      app: myapp
+  template:
+    metadata:
+    labels:
+      app: myapp
+    spec: myapp
+      containers:
+        - name: myapp
+          image: myacr.azurecr.io/myapp:latest
+          ports:
+            - containerport: 80
+
+apiversion: v1
+kind: service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: Loadbalancer
