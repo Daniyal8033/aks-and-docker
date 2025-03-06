@@ -9,7 +9,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: app-secret
+  name: app-secrets
 type: Opaque
 data:
   DB_PASSWORD: bXlwYXNzd29yZA==  # Base64 encoded password (example: "mypassword")
